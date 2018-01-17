@@ -4,12 +4,17 @@ html
     link(href='/css/main.css', rel='stylesheet')
   body
     h1 Pets
-    table
-      tr
-        th Pet name
-        th Pet species
-      each pet in pets
+    form(class="pet-form" action='/' method='POST')
+      table
         tr
-          td
-            input(class='pet-name', value=pet.name)
-          td= pet.species_name
+          th Pet name
+          th Pet species
+          each pet in pets
+            tr
+              td
+                  input(class='pet-name' value=pet.name)
+                  input(class='pet-id' type='hidden' value=pet.pet_id)
+              td= pet.species_name
+      button(class='submit-btn' type='submit') Submit Changes
+    p.messageField= message
+    script(src='./script.js')
